@@ -1,4 +1,7 @@
-import express, { Application } from 'express';
+import express, { Application } from "express";
+
+import indexRoutes from './routes/indexRoutes';
+import arfamedRoutes from './routes/arfamedRoutes';
 
 class Server {
 
