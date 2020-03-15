@@ -1,4 +1,6 @@
 import express, { Application } from "express";
+import morgan from 'morgan';
+import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import arfamedRoutes from './routes/arfamedRoutes';
@@ -15,10 +17,15 @@ class Server {
 
   config(): void {
     this.app.set('port', process.env.PORT || 1332);
+    this.app.use(morgan('combined'));
+    this.app.use(cors());
+    this.app.use(express.json()); // bodyparser incluido en express
+    this.app.use(express.urlencoded({extended: false}));
   }
 
   routes(): void {
-
+    this.app.use('/', indexRoutes);
+    this.app.use('/api/arfamed', arfamedRoutes);
   }
 
   start(): void {
