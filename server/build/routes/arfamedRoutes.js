@@ -11,7 +11,11 @@ class ArfamedRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', arfamedController_1.default.index);
+        this.router.get('/', arfamedController_1.default.list);
+        this.router.get('/:id', arfamedController_1.default.consult);
+        this.router.post('/', arfamedController_1.default.create);
+        this.router.delete('/:id', arfamedController_1.default.delete);
+        this.router.put('/:id', arfamedController_1.default.update);
     }
 }
 const arfamedRoutes = new ArfamedRoutes();
