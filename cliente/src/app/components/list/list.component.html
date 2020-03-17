@@ -1,0 +1,14 @@
+<div class="col-md-4" *ngFor="let profesional of profesional" style="padding: 10px">
+  <div class="card text-center">
+    <div class="card-header">
+      <a href="#">
+        {{profesional.nombre_prof}}
+        {{profesional.apellido_prof}}
+      </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <p>Celular: {{profesional.celular_prof}}</p>
+    <p>Correo: {{profesional.correo_prof}}</p>
+  </div>
+</div>
