@@ -24,10 +24,11 @@ export class ArfamedService {
   }
 
   postNewProfesional(prof: Profesional) {
+    console.log(prof);
     return this.http.post(`${this.API_URI}/arfamed`, prof);
   }
 
-  deleteProfesional(id: String) {
-    return this.http.delete(`${this.API_URI}/arfamed/${id}`);
+  deleteProfesional(cod: string) {
+    return this.http.delete(`${this.API_URI}/arfamed/${cod}`);
   }
 }
