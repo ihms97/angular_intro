@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ArfamedService } from '../../services/arfamed.service';
 import { Profesional } from '../../models/profesional';
 
@@ -18,26 +19,36 @@ export class FormComponent implements OnInit {
     cod_especialidad: 3
   };
 
-  constructor(private arfamedService: ArfamedService) { }
+  constructor(private arfamedService: ArfamedService, private router: Router, private activedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.peticionInicial();
+    this.modify();
+  }
+
+  modify() {
+    const params = this.activedRoute.snapshot.params;
+    if (params.id) {
+      this.arfamedService.getProfesional(params.id).subscribe(
+        res => {this.profesional = res},
+        err => {console.error(err)}
+      );
+    } else {
+      this.peticionInicial();
+    }
   }
 
   peticionInicial() {
     this.arfamedService.getList().subscribe(
-      res => {
-        this.profesional = res;
-      },
-      err => {
-        console.error(err);
-      }
+      res => {},
+      err => {console.error(err)}
     );
   }
 
-  save() {
+  save() { // aclarar error
     this.arfamedService.postNewProfesional(this.profesional).subscribe(
-      res => {console.log(res)},
+      res => {
+        this.router.navigate(['/list']);
+      },
       err => {console.log(err)}
     );
   }
@@ -45,17 +56,9 @@ export class FormComponent implements OnInit {
   delete(codigo: number) {
     this.arfamedService.deleteProfesional(codigo.toString()).subscribe(
       res => {
-        console.log(res);
         this.peticionInicial();
       },
       err => {console.log(err)}
     );
   }
-
-  /*modify(codigo: number, prof: profesional) {
-    this.arfamedService.putProfesional(codigo).subscribe(
-      res => {console.log(res)},
-      err => {console.error(err)}
-    );
-  }*/
 }

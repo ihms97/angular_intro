@@ -74,7 +74,7 @@ class ArfamedController {
                     throw err;
                 }
                 else {
-                    res.json({ message: "The game was Updated" });
+                    res.json({ message: "El Profesional a sido actualizado con exito" });
                 }
             });
         });

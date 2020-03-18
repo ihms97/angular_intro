@@ -6,31 +6,31 @@
     <div class="form-group row">
       <label for="codprof" class="col-md-2 col-form-label">Código Profesional</label>
       <div class="col-md-9">
-        <input type="number" class="form-control" id="codprof" required [(ngModel)]="profesional.cod_prof">
+        <input type="number" class="form-control" id="codprof" [(ngModel)]="profesional.cod_prof" required>
       </div>
     </div>
     <div class="form-group row">
       <label for="ipName" class="col-md-2 col-form-label">Nombre/s</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" id="ipName" required [(ngModel)]="profesional.nombre_prof">
+        <input type="text" class="form-control" id="ipName" [(ngModel)]="profesional.nombre_prof" required>
       </div>
     </div>
     <div class="form-group row">
       <label for="ipLastName" class="col-md-2 col-form-label">Apellido/s</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" id="ipLastName" required [(ngModel)]="profesional.apellido_prof">
+        <input type="text" class="form-control" id="ipLastName" [(ngModel)]="profesional.apellido_prof"required>
       </div>
     </div>
     <div class="form-group row">
       <label for="ipRut" class="col-md-2 col-form-label">Celular</label>
       <div class="col-md-9">
-        <input type="number" class="form-control" id="ipRut" required [(ngModel)]="profesional.celular_prof">
+        <input type="number" class="form-control" id="ipRut" [(ngModel)]="profesional.celular_prof"required>
       </div>
     </div>
     <div class="form-group row">
       <label for="ipBorn" class="col-md-2 col-form-label">Correo</label>
       <div class="col-md-9">
-        <input type="email" class="form-control" id="ipBorn" required [(ngModel)]="profesional.correo_prof">
+        <input type="email" class="form-control" id="ipBorn" [(ngModel)]="profesional.correo_prof" required>
       </div>
     </div>
     <div class="form-group row">
@@ -39,7 +39,7 @@
         <!--<select class="custom-select" aria-label="Example select with button addon" name="sexoAnimal" required [(ngModel)]="profesional.cod_esp">
           <option value="3">3</option>
         </select>-->
-        <input type="number" class="form-control" id="optespecialidad" required [(ngModel)]="profesional.cod_especialidad">
+        <input type="number" class="form-control" id="optespecialidad" [(ngModel)]="profesional.cod_especialidad" required>
       </div>
     </div>
     <div class="submitbtn">

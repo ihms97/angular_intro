@@ -20,7 +20,7 @@
             <td>{{profesional.correo_prof}}</td>
             <td>{{profesional.cod_especialidad}}</td>
             <td>
-              <button type="button" class="btn btn-warning" routerLink="/profesional" (click)="import()">Modificar</button>
+              <button type="button" class="btn btn-warning" [routerLink]="['profesional/editor', profesional.cod_prof]">Modificar</button>
               <button type="button" class="btn btn-danger" (click)="delete(profesional.cod_prof)">Eliminar</button>
             </td>
           </tr>

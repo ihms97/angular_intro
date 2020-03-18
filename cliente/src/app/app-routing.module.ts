@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'profesional',
     component: FormComponent
+  },
+  {
+    path: 'list/profesional/editor/:id',
+    component: FormComponent
   }
 ];
 
