@@ -1,14 +1,30 @@
-<div class="col-md-4" *ngFor="let profesional of profesional" style="padding: 10px">
-  <div class="card text-center">
-    <div class="card-header">
-      <a href="#">
-        {{profesional.nombre_prof}}
-        {{profesional.apellido_prof}}
-      </a>
-    </div>
-  </div>
-  <div class="card-body">
-    <p>Celular: {{profesional.celular_prof}}</p>
-    <p>Correo: {{profesional.correo_prof}}</p>
+<div class="container">
+  <div class="row">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="tabletitle">
+        <tr>
+          <td>Codigo Usuario</td>
+          <td>Nombre/s</td>
+          <td>Apellido/s</td>
+          <td>Celular</td>
+          <td>Correo</td>
+          <td>Especialidad</td>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let profesional of profesional">
+            <td>{{profesional.cod_prof}}</td>
+            <td>{{profesional.nombre_prof}}</td>
+            <td>{{profesional.apellido_prof}}</td>
+            <td>{{profesional.celular_prof}}</td>
+            <td>{{profesional.correo_prof}}</td>
+            <td>{{profesional.cod_especialidad}}</td>
+            <td>
+              <button type="button" class="btn btn-warning" routerLink="/profesional" (click)="import()">Modificar</button>
+              <button type="button" class="btn btn-danger" (click)="delete(profesional.cod_prof)">Eliminar</button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
   </div>
 </div>

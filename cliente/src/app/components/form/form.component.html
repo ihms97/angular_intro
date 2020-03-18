@@ -6,31 +6,31 @@
     <div class="form-group row">
       <label for="codprof" class="col-md-2 col-form-label">Código Profesional</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" id="codprof" required [(ngModel)]="profesional.codigo">
+        <input type="number" class="form-control" id="codprof" required [(ngModel)]="profesional.cod_prof">
       </div>
     </div>
     <div class="form-group row">
       <label for="ipName" class="col-md-2 col-form-label">Nombre/s</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" id="ipName" required [(ngModel)]="profesional.nombre">
+        <input type="text" class="form-control" id="ipName" required [(ngModel)]="profesional.nombre_prof">
       </div>
     </div>
     <div class="form-group row">
       <label for="ipLastName" class="col-md-2 col-form-label">Apellido/s</label>
       <div class="col-md-9">
-        <input type="text" class="form-control" id="ipLastName" required [(ngModel)]="profesional.apellido">
+        <input type="text" class="form-control" id="ipLastName" required [(ngModel)]="profesional.apellido_prof">
       </div>
     </div>
     <div class="form-group row">
       <label for="ipRut" class="col-md-2 col-form-label">Celular</label>
       <div class="col-md-9">
-        <input type="number" class="form-control" id="ipRut" required [(ngModel)]="profesional.celular">
+        <input type="number" class="form-control" id="ipRut" required [(ngModel)]="profesional.celular_prof">
       </div>
     </div>
     <div class="form-group row">
       <label for="ipBorn" class="col-md-2 col-form-label">Correo</label>
       <div class="col-md-9">
-        <input type="email" class="form-control" id="ipBorn" required [(ngModel)]="profesional.correo">
+        <input type="email" class="form-control" id="ipBorn" required [(ngModel)]="profesional.correo_prof">
       </div>
     </div>
     <div class="form-group row">
@@ -39,17 +39,17 @@
         <!--<select class="custom-select" aria-label="Example select with button addon" name="sexoAnimal" required [(ngModel)]="profesional.cod_esp">
           <option value="3">3</option>
         </select>-->
-        <input type="number" class="form-control" id="optespecialidad" required [(ngModel)]="profesional.cod_esp">
+        <input type="number" class="form-control" id="optespecialidad" required [(ngModel)]="profesional.cod_especialidad">
       </div>
     </div>
     <div class="submitbtn">
       <div class="col-md-12">
-        <input class="btnsubmit" type="submit" name="btnsubmit" value="Registrar Usuario" (click)="saveProfesional()">
+        <input class="btnsubmit" type="submit" name="btnsubmit" value="Registrar Usuario" (click)="save()">
       </div>
     </div>
     <div class="submitbtn">
       <div class="col-md-12">
-        <input class="btnsubmit" type="submit" name="btndelete" value="Eliminar Usuario" (click)="deleteProfesional(profesional.codigo)">
+        <input class="btnsubmit" type="submit" name="btndelete" value="Eliminar Usuario" (click)="delete(profesional.cod_prof)">
       </div>
     </div>
   </div>

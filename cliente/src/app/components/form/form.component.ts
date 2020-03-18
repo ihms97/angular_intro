@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArfamedService } from '../../services/arfamed.service';
-
-import { Profesional } from '../../models/profesional'
+import { Profesional } from '../../models/profesional';
 
 @Component({
   selector: 'app-form',
@@ -11,12 +10,12 @@ import { Profesional } from '../../models/profesional'
 export class FormComponent implements OnInit {
 
   profesional: Profesional = {
-    codigo: '',
-    nombre: '',
-    apellido: '',
-    celular: 0,
-    correo: '',
-    cod_esp: 0
+    cod_prof: 100,
+    nombre_prof: 'Nombre',
+    apellido_prof: 'Apellido',
+    celular_prof: 123456789,
+    correo_prof: 'ejemplo@ejem.com',
+    cod_especialidad: 3
   };
 
   constructor(private arfamedService: ArfamedService) { }
@@ -36,26 +35,27 @@ export class FormComponent implements OnInit {
     );
   }
 
-  saveProfesional() {
+  save() {
     this.arfamedService.postNewProfesional(this.profesional).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
+      res => {console.log(res)},
+      err => {console.log(err)}
     );
   }
 
-  deleteProfesional(codigo: string) {
-    this.arfamedService.deleteProfesional(codigo).subscribe(
+  delete(codigo: number) {
+    this.arfamedService.deleteProfesional(codigo.toString()).subscribe(
       res => {
         console.log(res);
         this.peticionInicial();
       },
-      err => {
-        console.log(err);
-      }
+      err => {console.log(err)}
     );
   }
+
+  /*modify(codigo: number, prof: profesional) {
+    this.arfamedService.putProfesional(codigo).subscribe(
+      res => {console.log(res)},
+      err => {console.error(err)}
+    );
+  }*/
 }

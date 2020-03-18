@@ -8,27 +8,29 @@ import { Profesional } from '../models/profesional';
 })
 export class ArfamedService {
 
-  API_URI = 'http://localhost:1332/api';
+  API_URI = 'http://localhost:1332/api/arfamed';
+
   constructor(private http: HttpClient) { }
 
-  putProfesional(id: string, update: Profesional) {
-    return this.http.put(`${this.API_URI}/arfamed/${id}`, update);
+  putProfesional(cod: string, prof: Profesional) {
+    console.log(prof);
+    return this.http.put(`${this.API_URI}/${cod}`, prof);
   }
 
   getList() {
-    return this.http.get(`${this.API_URI}/arfamed`);
+    return this.http.get(`${this.API_URI}`);
   }
 
-  getProfesional(id: String) {
-    return this.http.get(`${this.API_URI}/arfamed/${id}`);
+  getProfesional(cod: String) {
+    return this.http.get(`${this.API_URI}/${cod}`);
   }
 
   postNewProfesional(prof: Profesional) {
     console.log(prof);
-    return this.http.post(`${this.API_URI}/arfamed`, prof);
+    return this.http.post(`${this.API_URI}`, prof);
   }
 
   deleteProfesional(cod: string) {
-    return this.http.delete(`${this.API_URI}/arfamed/${cod}`);
+    return this.http.delete(`${this.API_URI}/${cod}`);
   }
 }

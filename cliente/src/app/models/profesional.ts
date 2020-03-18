@@ -1,8 +1,8 @@
 export interface Profesional {
-  codigo?: string;
-  nombre?: string;
-  apellido?: string;
-  celular?: number;
-  correo?: string;
-  cod_esp?: number
+  cod_prof?: number;
+  nombre_prof?: string;
+  apellido_prof?: string;
+  celular_prof?: number;
+  correo_prof?: string;
+  cod_especialidad?: number
 }
