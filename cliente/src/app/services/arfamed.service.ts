@@ -12,7 +12,7 @@ export class ArfamedService {
 
   constructor(private http: HttpClient) { }
 
-  putProfesional(cod: string, prof: Profesional) {
+  putProfesional(cod: string|number, prof: Profesional) {
     return this.http.put(`${this.API_URI}/${cod}`, prof);
   }
 

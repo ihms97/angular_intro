@@ -19,12 +19,8 @@ export class ListComponent implements OnInit {
 
   peticionInicial() {
     this.arfamedService.getList().subscribe(
-      res => {
-        this.profesional = res;
-      },
-      err => {
-        console.error(err);
-      }
+      res => {this.profesional = res},
+      err => {console.error(err)}
     );
   }
 
@@ -36,9 +32,5 @@ export class ListComponent implements OnInit {
       },
       err => {console.log(err)}
     );
-  }
-
-  import() {
-
   }
 }
