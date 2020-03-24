@@ -1,10 +1,9 @@
 export default {
-
   database: {
-    host: 'localhost',
-    user: 'root',
-    database: 'arfamed',
-    password: '@Ihms1997'
-//    port: ''
+    host: 'pei.ddns.net',
+    port: 2332,
+    user: 'arfamedUser',
+    password: 'arfamed2332',
+    database: 'arfamed'
   }
 }

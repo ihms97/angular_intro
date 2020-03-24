@@ -1,5 +1,4 @@
 import { Router } from 'express';
-
 import arfamedController from '../controllers/arfamedController';
 
 class ArfamedRoutes {

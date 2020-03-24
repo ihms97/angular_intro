@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 class IndexController {
     index(req, res) {
-        res.json({ text: 'API is /api/arfamed' });
+        res.json({ message: 'Conexión establecida.' });
     }
 }
 exports.indexController = new IndexController();

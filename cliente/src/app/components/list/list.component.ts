@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArfamedService } from '../../services/arfamed.service';
 import { Profesional } from '../../models/profesional';
+import { Especialidad } from '../../models/especialidad';
 
 @Component({
   selector: 'app-list',
@@ -10,6 +11,7 @@ import { Profesional } from '../../models/profesional';
 export class ListComponent implements OnInit {
 
   profesional: any = [];
+  especialidad: any = [];
 
   constructor(private arfamedService: ArfamedService) { }
 
@@ -24,7 +26,14 @@ export class ListComponent implements OnInit {
     );
   }
 
-  delete(codigo: string) {
+  data(cod: String) {
+    this.arfamedService.getConsEsp(cod).subscribe(
+      res => {console.log(res); console.log(cod)},
+      err => {console.log(err)}
+    );
+  }
+
+  delete(codigo: String) {
     this.arfamedService.deleteProfesional(codigo).subscribe(
       res => {
         console.log(res);

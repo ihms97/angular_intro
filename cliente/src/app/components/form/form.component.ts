@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArfamedService } from '../../services/arfamed.service';
 import { Profesional } from '../../models/profesional';
+import { Especialidad } from '../../models/especialidad';
 
 @Component({
   selector: 'app-form',
@@ -14,26 +15,32 @@ export class FormComponent implements OnInit {
   constructor(private arfamedService: ArfamedService, private router: Router, private activedRoute: ActivatedRoute) { }
 
   profesional: Profesional;
+  especialidad: Especialidad;
   edit: boolean = false;
 
   ngOnInit(): void {
-    this.usuario(this.profesional)
     this.modify();
+    this.ListEsp();
   }
 
   modify() {
     const params = this.activedRoute.snapshot.params;
     if (params.id) {
       this.arfamedService.getProfesional(params.id).subscribe(
-        res => {this.usuario(res); this.edit = true},
+        res => {
+          this.usuario(res);
+          this.edit = true
+        },
         err => {console.error(err)}
       );
+    } else {
+      this.usuario(this.profesional);
     }
   }
 
   update() {
     this.arfamedService.putProfesional(this.profesional.cod_prof, this.profesional).subscribe(
-      res => {this.router.navigate(['/list']);},
+      res => {this.router.navigate(['/list'])},
       err => {console.error(err)}
     );
   }
@@ -45,16 +52,34 @@ export class FormComponent implements OnInit {
     );
   }
 
+  ListEsp() {
+    this.arfamedService.getListEsp().subscribe(
+      res => {this.especialidad = res},
+      err => {console.log(err)}
+    );
+  }
+
+  getEsp() {
+    console.log(this.especialidad.cod_especialidad);
+  }
+
   usuario(p: Profesional) {
     if (p == null) {
+
       this.profesional = {
-        cod_prof: 100,
+        cod_prof: 0,
         nombre_prof: 'Nombre',
         apellido_prof: 'Apellido',
-        celular_prof: 123456789,
+        celular_prof: 912345678,
         correo_prof: 'ejemplo@ejem.com',
-        cod_especialidad: 3
+        cod_especialidad: 0
       };
+
+      this.especialidad = {
+        cod_especialidad: 0,
+        detalle_especialidad: 'Elija una especialidad'
+      };
+
     } else {
       this.profesional = p[0];
     }

@@ -9,10 +9,10 @@ pool.getConnection((err, connection) => {
 //     console.log('DB is connected');
 
      if (err) {
-       console.log('Error in database connection: ', err.message, err.stack);
+       console.log('Error al establecer conexión con la base de datos: ', err.message, err.stack);
      } else {
        connection.release();
-       console.log('DB is connected');
+       console.log('La base de datos ha establecido conexión exitosamente.');
      }
 });
 

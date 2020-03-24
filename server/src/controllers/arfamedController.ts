@@ -54,9 +54,8 @@ class ArfamedController {
       } else {
         res.json({ message: "El Profesional a sido actualizado con exito" });
       }
-    })
+    });
   }
-
 }
 
 export const arfamedController = new ArfamedController();
