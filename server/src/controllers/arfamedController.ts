@@ -18,14 +18,14 @@ class ArfamedController {
   }
 
   public async listgroup (req: Request, res: Response): Promise<any> {
-    pool.query('select cod_prof,nombre_prof,apellido_prof,celular_prof,correo_prof,detalle_especialidad from profesional pf left JOIN especialidad es on pf.cod_prof = es.cod_especialidad', (err, result) => {
+    pool.query('select cod_prof, nombre_prof, apellido_prof, celular_prof, correo_prof, detalle_especialidad from profesional P inner join especialidad E on P.cod_especialidad = E.cod_especialidad', (err, result) => {
       if (err) {
         throw err;
       } else {
         res.json(result);
       }
     });
-  }  
+  }
 
   public async list (req: Request, res: Response): Promise<any> {
     await pool.query('select * from profesional', (err, result) => {
