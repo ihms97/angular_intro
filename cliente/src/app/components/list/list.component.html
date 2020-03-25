@@ -17,7 +17,8 @@
           <td>{{profesional.apellido_prof}}</td>
           <td>{{profesional.celular_prof}}</td>
           <td>{{profesional.correo_prof}}</td>
-          <td>{{profesional.cod_especialidad}}</td>
+          <!-- <td>{{profesional.cod_especialidad}}</td>-->
+          <td>{{profesional.detalle_especialidad}}</td>
           <td>
             <button type="button" class="btn btn-outline-warning" [routerLink]="['profesional/editor', profesional.cod_prof]">Modificar</button>
             <button type="button" class="btn btn-outline-danger" (click)="delete(profesional.cod_prof)">Eliminar</button>

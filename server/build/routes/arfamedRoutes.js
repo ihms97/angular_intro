@@ -11,7 +11,8 @@ class ArfamedRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', arfamedController_1.default.list);
+        // this.router.get('/', arfamedController.list);
+        this.router.get('/', arfamedController_1.default.listgroup);
         this.router.get('/:id', arfamedController_1.default.consult);
         this.router.post('/', arfamedController_1.default.create);
         this.router.delete('/:id', arfamedController_1.default.delete);

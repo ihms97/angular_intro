@@ -9,7 +9,8 @@ class ArfamedRoutes {
   }
 
   config(): void {
-    this.router.get('/', arfamedController.list);
+    // this.router.get('/', arfamedController.list);
+    this.router.get('/', arfamedController.listgroup);
     this.router.get('/:id', arfamedController.consult);
     this.router.post('/', arfamedController.create);
     this.router.delete('/:id', arfamedController.delete);
