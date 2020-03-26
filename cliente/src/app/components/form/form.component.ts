@@ -17,6 +17,7 @@ export class FormComponent implements OnInit {
   profesional: Profesional;
   especialidad: Especialidad;
   edit: boolean = false;
+  selected: String;
 
   ngOnInit(): void {
     this.modify();
@@ -29,6 +30,7 @@ export class FormComponent implements OnInit {
       this.arfamedService.getProfesional(params.id).subscribe(
         res => {
           this.usuario(res);
+          this.focus(res);
           // metodo para colocar por defecto la especialidad del usuario seleccionado.
           this.edit = true
         },
@@ -39,6 +41,17 @@ export class FormComponent implements OnInit {
     }
   }
 
+  focus(p: Profesional) {
+    const pr = p[0].cod_especialidad;
+    this.arfamedService.getConsEsp(pr).subscribe(
+      res => {
+        this.selected = res[0].detalle_especialidad;
+        console.log(this.selected);
+      },
+      err => {console.log(err)}
+    );
+  }
+  
   getEsp() {
     this.profesional.cod_especialidad = this.especialidad.cod_especialidad;
   }
@@ -59,7 +72,7 @@ export class FormComponent implements OnInit {
   }
 
   usuario(p: Profesional) {
-    this.usuarioEsp(p);
+    //this.usuarioEsp(p);
     if (p == null) {
       this.profesional = {
         cod_prof: 100,
@@ -74,18 +87,18 @@ export class FormComponent implements OnInit {
     }
   };
 
-  //no funcional, corregir
-  usuarioEsp(e: Especialidad) {
+  /*
+  usuarioEsp(e: Especialidad) { //no funcional, corregir
     if (e == null) {
       this.especialidad = {
         cod_especialidad: 1,
         detalle_especialidad: 'Escoja una especialidad'
       }
     } else {
-      console.log(e)
       this.especialidad = e;
     }
   }
+  */
 
   save() {
     this.getEsp();

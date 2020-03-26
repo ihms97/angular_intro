@@ -36,11 +36,20 @@
     <div class="form-group row">
       <label for="optespecialidad" class="col-md-2 col-form-label">Especialidad</label>
       <div class="col-md-9">
-        <select class="custom-select" [(ngModel)]="especialidad.cod_especialidad" required>
-          <option *ngFor="let especialidad of especialidad" value="{{especialidad.cod_especialidad}}">
-            {{especialidad.detalle_especialidad}}
-          </option>
-        </select>
+        <mat-form-field style="width: 515px">
+          <mat-select placeholder="Selecciona la especialidad del usuario" [(ngModel)]="especialidad.cod_especialidad" [(value)]="selected" required>
+            <mat-option *ngFor="let especialidad of especialidad" [value]="especialidad.cod_especialidad">
+              {{especialidad.detalle_especialidad}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--
+  <select #listEsp class="custom-select" [(ngModel)]="especialidad.cod_especialidad" required>
+    <option *ngFor="let especialidad of especialidad" value="{{especialidad.cod_especialidad}}">
+      {{especialidad.detalle_especialidad}}
+    </option>
+  </select>
+      -->
       </div>
     </div>
     <div class="container">

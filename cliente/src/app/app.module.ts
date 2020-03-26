@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { NavegationComponent } from './components/navegation/navegation.component';
 import { FormComponent } from './components/form/form.component';
 
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ArfamedService } from './services/arfamed.service';
 import { ListComponent } from './components/list/list.component';
 
@@ -22,7 +25,9 @@ import { ListComponent } from './components/list/list.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [
     ArfamedService

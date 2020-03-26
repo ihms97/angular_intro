@@ -10,8 +10,8 @@ import { Especialidad } from '../../models/especialidad';
 })
 export class ListComponent implements OnInit {
 
-  profesional: any = [];
-  especialidad: any = [];
+  profesional: Profesional;
+  especialidad: Especialidad;
 
   constructor(private arfamedService: ArfamedService) { }
 
@@ -21,11 +21,21 @@ export class ListComponent implements OnInit {
 
   peticionInicial() {
     this.arfamedService.getList().subscribe(
-      res => {this.profesional = res},
+      res => {
+        this.profesional = res;
+        //this.getEsp(this.profesional[6].cod_especialidad);
+      },
       err => {console.error(err)}
     );
   }
-
+/*
+  getEsp(id: Number) {
+    this.arfamedService.getConsEsp(id.toString()).subscribe(
+      res => {console.log(res)},
+      err => {console.log(err)}
+    );
+  }
+*/
   data(cod: String) {
     this.arfamedService.getConsEsp(cod).subscribe(
       res => {console.log(res); console.log(cod)},
