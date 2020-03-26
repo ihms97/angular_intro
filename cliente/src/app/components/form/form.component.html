@@ -37,14 +37,16 @@
       <label for="optespecialidad" class="col-md-2 col-form-label">Especialidad</label>
       <div class="col-md-9">
         <select class="custom-select" [(ngModel)]="especialidad.cod_especialidad" required>
-          <option *ngFor="let especialidad of especialidad" value="{{especialidad.cod_especialidad}}">{{especialidad.detalle_especialidad}}</option>
+          <option *ngFor="let especialidad of especialidad" value="{{especialidad.cod_especialidad}}">
+            {{especialidad.detalle_especialidad}}
+          </option>
         </select>
       </div>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <button type="button" class="btn btn-success btn-lg btn-block" (click)="getEsp()">Guardar Usuario</button> <!--edit ? update() : save()-->
+          <button type="button" class="btn btn-success btn-lg btn-block" (click)="edit ? update() : save()">Guardar Usuario</button>
           <button type="button" class="btn btn-danger btn-lg btn-block" (click)="delete(profesional.cod_prof)">Eliminar Usuario</button>
         </div>
       </div>

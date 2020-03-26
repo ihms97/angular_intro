@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArfamedService } from '../../services/arfamed.service';
 import { Profesional } from '../../models/profesional';
@@ -29,6 +29,7 @@ export class FormComponent implements OnInit {
       this.arfamedService.getProfesional(params.id).subscribe(
         res => {
           this.usuario(res);
+          // metodo para colocar por defecto la especialidad del usuario seleccionado.
           this.edit = true
         },
         err => {console.error(err)}
@@ -38,16 +39,14 @@ export class FormComponent implements OnInit {
     }
   }
 
-  update() {
-    this.arfamedService.putProfesional(this.profesional.cod_prof, this.profesional).subscribe(
-      res => {this.router.navigate(['/list'])},
-      err => {console.error(err)}
-    );
+  getEsp() {
+    this.profesional.cod_especialidad = this.especialidad.cod_especialidad;
   }
 
-  peticionInicial() {
-    this.arfamedService.getList().subscribe(
-      res => {},
+  update() {
+    this.getEsp();
+    this.arfamedService.putProfesional(this.profesional.cod_prof, this.profesional).subscribe(
+      res => {this.router.navigate(['/list'])},
       err => {console.error(err)}
     );
   }
@@ -59,33 +58,37 @@ export class FormComponent implements OnInit {
     );
   }
 
-  getEsp() {
-    console.log(this.especialidad.cod_especialidad);
-  }
-
   usuario(p: Profesional) {
+    this.usuarioEsp(p);
     if (p == null) {
-
       this.profesional = {
-        cod_prof: 0,
+        cod_prof: 100,
         nombre_prof: 'Nombre',
         apellido_prof: 'Apellido',
         celular_prof: 912345678,
         correo_prof: 'ejemplo@ejem.com',
-        cod_especialidad: 0
+        cod_especialidad: 1
       };
-
-      this.especialidad = {
-        cod_especialidad: 0,
-        detalle_especialidad: 'Elija una especialidad'
-      };
-
     } else {
       this.profesional = p[0];
     }
   };
 
-  save() { // aclarar error
+  //no funcional, corregir
+  usuarioEsp(e: Especialidad) {
+    if (e == null) {
+      this.especialidad = {
+        cod_especialidad: 1,
+        detalle_especialidad: 'Escoja una especialidad'
+      }
+    } else {
+      console.log(e)
+      this.especialidad = e;
+    }
+  }
+
+  save() {
+    this.getEsp();
     this.arfamedService.postNewProfesional(this.profesional).subscribe(
       res => {
         this.router.navigate(['/list']);
@@ -97,9 +100,16 @@ export class FormComponent implements OnInit {
   delete(codigo: number) {
     this.arfamedService.deleteProfesional(codigo.toString()).subscribe(
       res => {
-        this.peticionInicial();
+        this.router.navigate(['/list']);
       },
       err => {console.log(err)}
+    );
+  }
+
+  peticionInicial() {
+    this.arfamedService.getList().subscribe(
+      res => {this.profesional = res},
+      err => {console.error(err)}
     );
   }
 }
