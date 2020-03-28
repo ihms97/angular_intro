@@ -11,6 +11,7 @@ class DataRoutes {
   config(): void {
     this.router.get('/', dataController.listEsp);
     this.router.get('/:id', dataController.consultEsp);
+    this.router.get('/cod/consult', dataController.consultCodEsp);
   }
 }
 

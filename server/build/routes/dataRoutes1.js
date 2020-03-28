@@ -13,7 +13,6 @@ class DataRoutes {
     config() {
         this.router.get('/', dataController_1.default.listEsp);
         this.router.get('/:id', dataController_1.default.consultEsp);
-        this.router.get('/cod/consult', dataController_1.default.consultCodEsp);
     }
 }
 const dataRoutes = new DataRoutes();

@@ -43,6 +43,23 @@ class DataController {
             });
         });
     }
+    consultCodEsp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query('select max(cod_prof) from profesional', (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                else {
+                    if (!result.length) {
+                        res.json({ message: 'No se ha podido obtener el codigo del profesional, por favor consulte con el administrador del sistema.' });
+                    }
+                    else {
+                        res.json(result);
+                    }
+                }
+            });
+        });
+    }
 }
 exports.dataController = new DataController();
 exports.default = exports.dataController;
