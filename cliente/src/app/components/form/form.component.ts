@@ -31,12 +31,12 @@ export class FormComponent implements OnInit {
         res => {
           this.usuario(res);
           this.focus(res);
-          // metodo para colocar por defecto la especialidad del usuario seleccionado.
           this.edit = true
         },
         err => {console.error(err)}
       );
     } else {
+      this.codEsp();
       this.usuario(this.profesional);
     }
   }
@@ -47,6 +47,15 @@ export class FormComponent implements OnInit {
       res => {
         this.selected = res[0].detalle_especialidad;
         console.log(this.selected);
+      },
+      err => {console.log(err)}
+    );
+  }
+
+  codEsp() {
+    this.arfamedService.getCodEsp().subscribe(
+      res => {
+        this.profesional.cod_especialidad = res[0]['max(cod_prof)'];
       },
       err => {console.log(err)}
     );
@@ -75,7 +84,7 @@ export class FormComponent implements OnInit {
     //this.usuarioEsp(p);
     if (p == null) {
       this.profesional = {
-        cod_prof: 100,
+        cod_prof: 0,
         nombre_prof: 'Nombre',
         apellido_prof: 'Apellido',
         celular_prof: 912345678,
@@ -86,19 +95,6 @@ export class FormComponent implements OnInit {
       this.profesional = p[0];
     }
   };
-
-  /*
-  usuarioEsp(e: Especialidad) { //no funcional, corregir
-    if (e == null) {
-      this.especialidad = {
-        cod_especialidad: 1,
-        detalle_especialidad: 'Escoja una especialidad'
-      }
-    } else {
-      this.especialidad = e;
-    }
-  }
-  */
 
   save() {
     this.getEsp();

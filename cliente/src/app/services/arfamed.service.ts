@@ -26,6 +26,10 @@ export class ArfamedService {
     return this.http.get(`${this.API_URIB}`);
   }
 
+  getCodEsp() {
+    return this.http.get(`${this.API_URIB}/cod/consult`);
+  }
+
   getConsEsp(cod: String) {
     return this.http.get(`${this.API_URIB}/${cod}`);
   }
